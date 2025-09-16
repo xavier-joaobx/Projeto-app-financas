@@ -1,4 +1,3 @@
-
         /* Reset e estilos base */
         * {
             margin: 0;
@@ -155,6 +154,15 @@
             background-color: #f5f5f5;
         }
         
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
         /* Gráfico (placeholder) */
         .chart-container {
             background: white;
@@ -168,6 +176,39 @@
             justify-content: center;
             text-align: center;
             color: #7f8c8d;
+        }
+        
+        /* Filtros */
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Alertas */
+        .alert {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
         
         /* Rodapé */
@@ -202,6 +243,10 @@
             .transactions-table {
                 display: block;
                 overflow-x: auto;
+            }
+            
+            .filters {
+                flex-direction: column;
             }
         }
         
