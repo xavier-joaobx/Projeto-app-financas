@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transações - Finanças Pessoais</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Finanças Pessoais</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="transacoes.html">Transações</a></li>
+            <li><a href="planejamento.html">Planejamento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+   <section id="transactions" class="card">
+            <h3>Adicionar Transação</h3>
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" placeholder="Ex: Compra supermercado" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Valor (R$)</label>
+                    <input type="number" id="amount" step="0.01" placeholder="0,00" min="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <select id="type" required>
+                        <option value="income">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <select id="category" required>
+                        <option value="food">Alimentação</option>
+                        <option value="transport">Transporte</option>
+                        <option value="housing">Moradia</option>
+                        <option value="health">Saúde</option>
+                        <option value="education">Educação</option>
+                        <option value="entertainment">Entretenimento</option>
+                        <option value="other">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <button type="submit">Adicionar Transação</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h3>Últimas Transações</h3>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-type">Filtrar por tipo:</label>
+                    <select id="filter-type" onchange="filterTransactions()">
+                        <option value="all">Todos</option>
+                        <option value="income">Receitas</option>
+                        <option value="expense">Despesas</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-category">Filtrar por categoria:</label>
+                    <select id="filter-category" onchange="filterTransactions()">
+                        <option value="all">Todas</option>
+                        <option value="food">Alimentação</option>
+                        <option value="transport">Transporte</option>
+                        <option value="housing">Moradia</option>
+                        <option value="health">Saúde</option>
+                        <option value="education">Educação</option>
+                        <option value="entertainment">Entretenimento</option>
+                        <option value="other">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-month">Filtrar por mês:</label>
+                    <select id="filter-month" onchange="filterTransactions()">
+                        <option value="all">Todos</option>
+                        <option value="0">Janeiro</option>
+                        <option value="1">Fevereiro</option>
+                        <option value="2">Março</option>
+                        <option value="3">Abril</option>
+                        <option value="4">Maio</option>
+                        <option value="5">Junho</option>
+                        <option value="6">Julho</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Setembro</option>
+                        <option value="9">Outubro</option>
+                        <option value="10">Novembro</option>
+                        <option value="11">Dezembro</option>
+                    </select>
+                </div>
+            </div>
+            
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-body">
+                    <!-- As transações serão inseridas aqui via JavaScript -->
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="clearAllData()" style="background-color: #e74c3c;">Limpar Todos os Dados</button>
+                <button onclick="exportData()" style="background-color: #27ae60; margin-left: 10px;">Exportar Dados</button>
+            </div>
+        </section>
+
+  <footer>
+    <div class="container">
+      <p>Sistema de Planejamento Financeiro Pessoal &copy; 2025</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
