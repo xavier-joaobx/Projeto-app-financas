@@ -27,10 +27,33 @@ function renderizarTransacoes() {
   lista.innerHTML = "";
   transacoes.forEach((t, i) => {
     let li = document.createElement("li");
-    li.textContent = `${t.descricao} - R$ ${t.valor.toFixed(2)} (${t.tipo})`;
+    li.textContent = `${t.descricao} - R$ ${t.valor.toFixed(2)} (${t.tipo}) <td>
+                        <button class="delete-btn" onclick="deleteTransaction(${t.id})">Excluir</button>
+                    </td>`;
     lista.appendChild(li);
   });
 }
+
+function deleteTransaction(id) {
+            if (confirm('Tem certeza que deseja excluir esta transação?')) {
+                transactions = transactions.filter(transaction => transaction.id !== id);
+                saveData();
+                updateDashboard();
+                renderTransactions();
+                showAlert('Transação excluída com sucesso!', 'success');
+            }
+        }
+
+function showAlert(message, type) {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.style.display = 'block';
+            
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
 
 // Renderiza metas
 function renderizarMetas() {
