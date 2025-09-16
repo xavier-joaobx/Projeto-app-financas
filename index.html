@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento Financeiro Pessoal</title>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a6580);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        /* Navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        /* Conteúdo principal */
+        .dashboard {
+            padding: 2rem 0;
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .balance {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .positive {
+            color: #27ae60;
+        }
+        
+        .negative {
+            color: #e74c3c;
+        }
+        
+        /* Formulários */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #4a6580;
+        }
+        
+        /* Tabela de transações */
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .transactions-table th, .transactions-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .transactions-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .transactions-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Gráfico (placeholder) */
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .transactions-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .balance {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Finanças Pessoais</div>
+                <nav>
+                    <ul>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#transactions">Transações</a></li>
+                        <li><a href="#planning">Planejamento</a></li>
+                        <li><a href="#reports">Relatórios</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="dashboard" class="dashboard">
+            <h2>Dashboard Financeiro</h2>
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Saldo Atual</h3>
+                    <div class="balance positive">R$ 5.250,00</div>
+                    <p>Atualizado em 10/10/2023</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Receitas do Mês</h3>
+                    <div class="balance positive">R$ 4.500,00</div>
+                    <p>Meta: R$ 5.000,00</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Despesas do Mês</h3>
+                    <div class="balance negative">R$ 3.200,00</div>
+                    <p>Limite: R$ 3.500,00</p>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <p>Gráfico de Evolução Financeira (seria implementado com uma biblioteca como Chart.js)</p>
+            </div>
+        </section>
+
+        <section id="transactions" class="card">
+            <h3>Adicionar Transação</h3>
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" placeholder="Ex: Compra supermercado" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Valor (R$)</label>
+                    <input type="number" id="amount" step="0.01" placeholder="0,00" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="type">Tipo</label>
+                    <select id="type" required>
+                        <option value="income">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <select id="category" required>
+                        <option value="food">Alimentação</option>
+                        <option value="transport">Transporte</option>
+                        <option value="housing">Moradia</option>
+                        <option value="health">Saúde</option>
+                        <option value="education">Educação</option>
+                        <option value="entertainment">Entretenimento</option>
+                        <option value="other">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <button type="submit">Adicionar Transação</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h3>Últimas Transações</h3>
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10/10/2023</td>
+                        <td>Salário</td>
+                        <td>Receita</td>
+                        <td class="positive">R$ 3.500,00</td>
+                    </tr>
+                    <tr>
+                        <td>09/10/2023</td>
+                        <td>Supermercado</td>
+                        <td>Alimentação</td>
+                        <td class="negative">R$ 350,00</td>
+                    </tr>
+                    <tr>
+                        <td>08/10/2023</td>
+                        <td>Academia</td>
+                        <td>Saúde</td>
+                        <td class="negative">R$ 120,00</td>
+                    </tr>
+                    <tr>
+                        <td>05/10/2023</td>
+                        <td>Freelance</td>
+                        <td>Receita</td>
+                        <td class="positive">R$ 1.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>03/10/2023</td>
+                        <td>Aluguel</td>
+                        <td>Moradia</td>
+                        <td class="negative">R$ 1.200,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Planejamento Financeiro Pessoal &copy; 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para funcionalidade básica do formulário
+        document.getElementById('transaction-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const description = document.getElementById('description').value;
+            const amount = document.getElementById('amount').value;
+            const type = document.getElementById('type').value;
+            const category = document.getElementById('category').value;
+            const date = document.getElementById('date').value;
+            
+            // Aqui você normalmente enviaria os dados para um backend
+            // Por enquanto, vamos apenas exibir um alerta
+            alert(`Transação adicionada:\nDescrição: ${description}\nValor: R$ ${amount}\nTipo: ${type}\nCategoria: ${category}\nData: ${date}`);
+            
+            // Limpar o formulário
+            this.reset();
+        });
+        
+        // Definir data atual como padrão no campo de data
+        document.getElementById('date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
