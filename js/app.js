@@ -27,9 +27,9 @@ function renderizarTransacoes() {
   lista.innerHTML = "";
   transacoes.forEach((t, i) => {
     let li = document.createElement("li");
-    li.textContent = `${t.descricao} - R$ ${t.valor.toFixed(2)} (${t.tipo}) <td>
-                        <button class="delete-btn" onclick="deleteTransaction(${t.id})">Excluir</button>
-                    </td>`;
+    li.textContent = `${t.descricao} - R$ ${t.valor.toFixed(2)} (${t.tipo})
+    <button class="delete-btn" onclick="deleteTransaction(${i})">Excluir</button>
+                    `;
     lista.appendChild(li);
   });
 }
