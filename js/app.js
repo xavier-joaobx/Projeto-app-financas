@@ -37,9 +37,8 @@ function renderizarTransacoes() {
 function deleteTransaction(id) {
             if (confirm('Tem certeza que deseja excluir esta transação?')) {
                 transactions = transactions.filter(transaction => transaction.id !== id);
-                saveData();
-                updateDashboard();
-                renderTransactions();
+                atualizarDashboard();
+                renderizarTransacoes();
                 showAlert('Transação excluída com sucesso!', 'success');
             }
         }
