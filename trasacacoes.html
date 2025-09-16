@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transações - Finanças Pessoais</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Finanças Pessoais</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="transacoes.html">Transações</a></li>
+            <li><a href="planejamento.html">Planejamento</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="transacoes">
+      <h2>Gerenciar Transações</h2>
+
+      <form id="formTransacao">
+        <label>Descrição:
+          <input type="text" id="descricao" required>
+        </label>
+        <label>Valor (R$):
+          <input type="number" id="valor" required>
+        </label>
+        <label>Tipo:
+          <select id="tipo" required>
+            <option value="receita">Receita</option>
+            <option value="despesa">Despesa</option>
+          </select>
+        </label>
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <h3>Histórico</h3>
+      <ul id="listaTransacoes"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Sistema de Planejamento Financeiro Pessoal &copy; 2025</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
