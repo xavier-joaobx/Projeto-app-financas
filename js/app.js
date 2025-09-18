@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hideApp();
       const loginContainer = document.getElementById('login-container');
       loginContainer.classList.add('show');
+      document.getElementById('login-logado').style.display = 'none';
     }
   });
 });
