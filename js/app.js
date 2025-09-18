@@ -10,7 +10,11 @@ let financeChart = null;
 async function signUp() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const { error } = await supabase.auth.signUp({ email, password });
+  const { error } = await supabase.auth.signUp({ email, password ,
+                                               options: {
+      // garante que o link de confirmação redirecione para a pasta do projeto
+      emailRedirectTo: window.location.origin + "/Projeto-app-financas/"
+    }});
   if (error) alert("Erro no cadastro: " + error.message);
   else alert("Conta criada! Verifique seu email.");
 }
