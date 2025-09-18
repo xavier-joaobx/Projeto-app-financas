@@ -22,6 +22,8 @@ async function signIn() {
   if (error) alert("Erro no login: " + error.message);
   else {
     document.getElementById('login-container').style.display = 'none';
+    const loginLogado = document.getElementById('login-logado');
+    loginLogado.style.display = 'block';
     document.getElementById("login-status").textContent = "Logado como " + email;
     showApp();
   }
