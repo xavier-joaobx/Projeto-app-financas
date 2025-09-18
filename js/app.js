@@ -227,6 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showApp();
     } else {
       hideApp();
+      const loginContainer = document.getElementById('login-container');
+      loginContainer.classList.add('show');
     }
   });
 });
