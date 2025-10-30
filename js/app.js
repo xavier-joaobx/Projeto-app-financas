@@ -8,8 +8,18 @@ let financeChart = null;
 
 // === LOGIN / CADASTRO / LOGOUT ===
 async function signUp() {
+  
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  
+  if (!email || !email.includes("@")) {
+    alert("Por favor, insira um e-mail válido.");
+    return;
+  }
+  if (password.length < 6) {
+    alert("A senha deve ter pelo menos 6 caracteres.");
+    return;
+  }
   const { error } = await supabase.auth.signUp({ email, password ,
                                                options: {
       // garante que o link de confirmação redirecione para a pasta do projeto
